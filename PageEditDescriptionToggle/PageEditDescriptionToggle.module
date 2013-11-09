@@ -1,0 +1,49 @@
+<?php
+
+/**
+ *
+ * PageEdit Description Toggle
+ *
+ * @author Christian Raunitschka (owzim)
+ * https://github.com/owzim/PageEditDescriptionToggle
+ *
+ * @date_created 09/11/2013
+ *
+ * ProcessWire 2.x
+ * Copyright (C) 2011 by Ryan Cramer
+ * Licensed under GNU/GPL v2, see LICENSE.TXT
+ *
+ * http://www.processwire.com
+ * http://www.ryancramer.com
+ *
+ */
+
+class PageEditDescriptionToggle extends Process {
+
+	/**
+	 * getModuleInfo is a module required by all modules to tell ProcessWire about them
+	 *
+	 * @return array
+	 *
+	 */
+	public static function getModuleInfo() {
+
+		return array(
+			'title' => 'PageEdit Description Toggle',
+			// version: major, minor, revision, i.e. 100 = 1.0.0
+			'version' => 001,
+			'summary' => 'Adds buttons to all input field headers in page edit, which toggle the field\'s description',
+			'singular' => true,
+			'autoload' => true,
+		);
+	}
+
+	public function init() {
+		$this->addHookBefore('ProcessController::execute', $this, 'hookExecute');
+	}
+
+	public function hookExecute(HookEvent $event) {
+		$this->config->scripts->add($this->config->urls->PageEditDescriptionToggle . 'PageEditDescriptionToggle.js');
+		$this->config->styles->add($this->config->urls->PageEditDescriptionToggle . 'PageEditDescriptionToggle.css');
+	}
+}

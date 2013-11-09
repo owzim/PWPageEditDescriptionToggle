@@ -1,0 +1,16 @@
+.Inputfield .description-toggle {
+	float: right;
+	padding: 0 1em;
+}
+
+
+.Inputfield .description-toggle:hover {
+	opacity: 0.5;
+}
+
+.icon-angle-right + .description-toggle,
+.InputfieldCropImage .description-toggle,
+.InputfieldImage .description-toggle,
+.InputfieldStateCollapsed .description-toggle {
+	display: none;
+}
